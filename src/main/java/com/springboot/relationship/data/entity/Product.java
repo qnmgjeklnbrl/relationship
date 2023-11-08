@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -36,7 +37,11 @@ public class Product extends BaseEntity {
     @Column(nullable = false)
     private Integer stock;
 
-    
+    @OneToOne(mappedBy = "product")
+    //mapedBy에 들어가는 값은 연관관계를 갖고 있는 상대 엔티티에 있는 연관관계 필드의 이름이 된다. 이 설정을
+    // 마치면 ProductDetail 엔티티가 Product 엔티티의 주인이 된다.
+    @ToString.Exclude
+    private ProductDetail productDetail;
 
 
 

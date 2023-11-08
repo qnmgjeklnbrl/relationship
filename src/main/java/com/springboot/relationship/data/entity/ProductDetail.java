@@ -26,7 +26,8 @@ public class ProductDetail {
     
     private String description;
 
-    @OneToOne // 다른 엔티티 객체를 필드로 정의했을 때 일대일 연관관계로 매핑하기 위해 사용된다.
+    @OneToOne(optional = false) // 다른 엔티티 객체를 필드로 정의했을 때 일대일 연관관계로 매핑하기 위해 사용된다.
+    //optional = false 속성을 설정하면 product가 null 값을 허용하지 않게 한다.
     @JoinColumn(name = "product_number")//매핑할 외래키를 설정
     private Product product;
 }
